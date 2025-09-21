@@ -18,8 +18,6 @@ local plugins = {
 
     { 'nvim-lualine/lualine.nvim' },
 
-    { 'preservim/nerdtree' },
-
     -- Autocomplete and LSP
     { 'neovim/nvim-lspconfig' },
     { 'hrsh7th/cmp-buffer' },
@@ -30,10 +28,16 @@ local plugins = {
     { 'L3MON4D3/LuaSnip' },
     { 'lukas-reineke/cmp-under-comparator' },
     { 'p00f/clangd_extensions.nvim' },
+    { 'aznhe21/actions-preview.nvim' },
 
     -- telescope
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope.nvim' },
+
+    -- neotree
+    { 'nvim-neo-tree/neo-tree.nvim' },
+    { 'MunifTanjim/nui.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
 
     -- Languages
     { 'rluba/jai.vim' },
@@ -43,6 +47,9 @@ local plugins = {
     { 'cocateh/vim-gruber-darker' },
     { 'ishan9299/modus-theme-vim' },
     { 'navarasu/onedark.nvim' },
+    { 'catppuccin/nvim' },
+
+    { 'f-person/git-blame.nvim' }
 }
 
 require('lazy').setup(plugins)
@@ -53,8 +60,12 @@ require('lazy').setup(plugins)
 require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'vimdoc', 'lua' },
-    auto_install = true
+    ensure_installed = { 'c', 'python', 'markdown', 'vimdoc', 'lua' },
+    sync_install = true,
+    highlight = {
+        enable = true,
+    },
+    auto_install = true,
 }
 
 require('guess-indent').setup {}
@@ -223,6 +234,10 @@ lspconfig.nil_ls.setup {
     autostart = false
 }
 
+lspconfig.zls.setup {
+    autostart = false
+}
+
 vim.diagnostic.config({
     virtual_text = {
         prefix = '●',
@@ -264,4 +279,4 @@ local dropdown_theme = require('telescope.themes').get_dropdown({
     previewer = false;
 })
 
-vim.cmd.colorscheme('onedark')
+vim.cmd.colorscheme('catppuccin')

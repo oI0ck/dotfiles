@@ -6,6 +6,7 @@ vim.opt.ruler = true
 vim.opt.ai = true
 vim.opt.wildmenu = true
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.path = vim.opt.path + "**"
 vim.opt.backspace = [[indent,eol,start]]
 vim.opt.mouse = 'a'
