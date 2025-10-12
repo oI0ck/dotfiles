@@ -49,7 +49,7 @@ local plugins = {
     { 'navarasu/onedark.nvim' },
     { 'catppuccin/nvim' },
 
-    { 'f-person/git-blame.nvim' }
+    { 'FabijanZulj/blame.nvim' }
 }
 
 require('lazy').setup(plugins)
@@ -278,5 +278,9 @@ local dropdown_theme = require('telescope.themes').get_dropdown({
     prompt_prefix = 'Files>';
     previewer = false;
 })
+
+require('gitblame').setup {
+    enabled = false,
+}
 
 vim.cmd.colorscheme('catppuccin')

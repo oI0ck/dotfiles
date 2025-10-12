@@ -13,7 +13,9 @@ vim.api.nvim_create_autocmd({'LspAttach'}, {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
         vim.keymap.set('n', '<C-]>', telescope_builtins.lsp_references, { noremap = true, silent = true })
         vim.keymap.set('n', '<C-[>', require('actions-preview').code_actions, { noremap = true, silent = true })
+        vim.keymap.set('n', 'gs', telescope_builtins.lsp_workspace_symbols, { noremap = true, silent = true })
     end
 })
 
 vim.keymap.set('n', '<C-;>', ':Neotree filesystem reveal left<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-.>', ':BlameToggle window<CR>', { noremap = true, silent = true })
