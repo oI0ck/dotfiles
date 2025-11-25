@@ -48,8 +48,7 @@ local plugins = {
     { 'ishan9299/modus-theme-vim' },
     { 'navarasu/onedark.nvim' },
     { 'catppuccin/nvim' },
-
-    { 'FabijanZulj/blame.nvim' }
+    { 'deparr/tairiki.nvim' }
 }
 
 require('lazy').setup(plugins)
@@ -208,35 +207,23 @@ cmp.setup {
     }
 }
 
-local lspconfig = require('lspconfig')
-
-lspconfig.rust_analyzer.setup {
-    autostart = false
+local lsps = {
+    { "rust_analyzer", { autostart = false } },
+    { "gopls", { autostart = false } },
+    { "clangd", { autostart = false } },
+    { "ruby_lsp", { autostart = false, init_options = { formatter = "standard", linters = { "standard" } } } },
+    { "pyright", { autostart = false } },
+    { "nil_ls", { autostart = false } },
+    { "zls", { autostart = false } },
 }
 
-lspconfig.clangd.setup {
-    autostart = false
-}
-
-lspconfig.pyright.setup {
-    autostart = false
-}
-
-lspconfig.ruby_lsp.setup {
-    autostart = false,
-    init_options = {
-        formatter = 'standard',
-        linters = { 'standard' },
-    },
-}
-
-lspconfig.nil_ls.setup {
-    autostart = false
-}
-
-lspconfig.zls.setup {
-    autostart = false
-}
+for _, lsp in pairs(lsps) do
+    local name, config = lsp[1], lsp[2]
+    vim.lsp.enable(name)
+    if config then
+        vim.lsp.config(name, config)
+    end
+end
 
 vim.diagnostic.config({
     virtual_text = {
@@ -279,8 +266,4 @@ local dropdown_theme = require('telescope.themes').get_dropdown({
     previewer = false;
 })
 
-require('gitblame').setup {
-    enabled = false,
-}
-
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('tairiki')
