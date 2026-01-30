@@ -41,6 +41,7 @@
 (load "~/.emacs.d/local-settings/keys.el")
 (load "~/.emacs.d/local-settings/modes.el")
 (load "~/.emacs.d/local-settings/hooks.el")
+(load "~/.emacs.d/local-settings/window-settings.el")
 
 (cond ((eq system-type 'darwin) (load "~/.emacs.d/local-settings/mac.el"))
       ((eq system-type 'windows-nt) (load "~/.emacs.d/local-settings/windows.el"))
