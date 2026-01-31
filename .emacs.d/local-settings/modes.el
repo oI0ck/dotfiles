@@ -1,9 +1,11 @@
+;;; -* lexical-binding: t -*-
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (column-number-mode 1)
 (global-display-fill-column-indicator-mode t)
 (recentf-mode 1)
 (global-display-line-numbers-mode)
-(fido-vertical-mode)
+(vertico-mode)
 (nyan-mode)
 (global-company-mode)
+(editorconfig-mode)

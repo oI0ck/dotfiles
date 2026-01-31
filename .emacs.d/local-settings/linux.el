@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (exec-path-from-shell-initialize)
 
 (ignore-errors
@@ -7,5 +8,5 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   (add-hook 'compilation-filter-hook 'local-colorize-compilation-buffer))
 
-(set-face-attribute 'default nil :font "Liberation Mono:size=12" :weight 'medium)
-(load-theme 'atom-one-dark t)
+(set-face-attribute 'default nil :font "Ubuntu Mono:size=12" :weight 'medium)
+(load-theme 'wheatgrass t)

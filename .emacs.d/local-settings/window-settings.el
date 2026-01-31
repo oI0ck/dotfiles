@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (require 'magit)
 (setq switch-to-buffer-obey-display-actions t)
 (setq magit-display-buffer-function #'display-buffer)

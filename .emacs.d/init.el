@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (package-initialize)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -13,13 +14,33 @@
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       completion-cycle-threshold 3
       gc-cons-threshold 100000000
-      erc-nick "nickiminjaj"
-      erc-user-full-name "cocateh"
       ring-bell-function 'ignore
-      projectile-indexing-method 'alien
-      inferior-lisp-program "sbcl"
       custom-file "~/.emacs.d/custom.el"
-      eglot-ignored-server-capabilities '(:inlayHintProvider))
+
+      ;; Emacs 31 started to show this warning
+      warning-suppress-log-types ''((files missing-lexbind-cookie))
+
+      ;; Projectile
+      projectile-indexing-method 'alien
+
+      ;; SLIME
+      inferior-lisp-program "sbcl"
+      eglot-ignored-server-capabilities '(:inlayHintProvider
+                                          :documentOnTypeFormattingProvider)
+
+      ;; Eglot
+      eglot-code-indications '(eldoc-hint)
+
+      ;; Magit
+      magit-blame-echo-style 'headings
+
+      ;; TRAMP
+      remote-file-name-inhibit-locks t
+      tramp-use-scp-direct-remote-copying t
+      remote-file-name-inhibit-auto-save-visited t
+      tramp-copy-size-limit (* 1024 1024)
+      tramp-verbose 2
+      magit-tramp-pipe-stty-settings 'pty)
 
 (setq-default comment-style 'extra-line
               display-fill-column-indicator-column 81
@@ -34,9 +55,6 @@
 (load "~/.emacs.d/local-settings/bootstrap.el")
 
 (require 'theme-switcher)
-(require 'jai-mode)
-(require 'eglot)
-(require 'dired)
 
 (load "~/.emacs.d/local-settings/keys.el")
 (load "~/.emacs.d/local-settings/modes.el")

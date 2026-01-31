@@ -1,3 +1,8 @@
+;;; -*- lexical-binding: t -*-
+(require 'tramp)
+(require 'eglot)
+(require 'jai-mode)
+
 (add-hook 'after-init-hook 'recentf-open-files)
 
 (add-hook 'c++-mode-hook '(lambda ()
@@ -39,3 +44,13 @@
 
 (add-hook 'jsonnet-mode-hook '(lambda ()
                                 (setq jsonnet-indent-level 4)))
+
+(with-eval-after-load 'tramp
+  (with-eval-after-load 'compile
+    (remove-hook 'compilation-mode-hook #'tramp-compile-disable-ssh-controlmaster-options)))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(swift-mode . ("xcrun" "sourcekit-lsp")))
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("basedpyright-langserver" "--stdio"))))

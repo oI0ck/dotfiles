@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (setq package-list
       '(exec-path-from-shell
         magit
@@ -17,6 +18,11 @@
         latex-preview-pane
         slime
         merlin
+        treemacs
+        evil
+        consult
+        vertico
+        ace-window
 
         ;; Themes
         gruber-darker-theme
@@ -44,7 +50,11 @@
         ada-mode
         kotlin-mode
         scala-mode
-        jsonnet-mode))
+        jsonnet-mode
+        yaml-mode
+        terraform-mode
+        bazel
+        dockerfile-mode))
 
 (defun local-bootstrap-packages ()
   (package-refresh-contents)

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (exec-path-from-shell-initialize)
 
 (set-face-attribute 'default nil :font "SF Mono:size=12" :weight 'medium)
@@ -16,7 +17,7 @@
               truncate-lines t)
 
 (menu-bar-mode 1)
-(load-theme 'high t)
+(load-theme 'wheatgrass t)
 
 (ignore-errors
   (add-hook 'compilation-filter-hook '(lambda ()
