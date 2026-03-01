@@ -36,4 +36,5 @@ autocmd FileType rust      set colorcolumn=101 tabstop=4 shiftwidth=4 expandtab
 autocmd FileType go        set colorcolumn=0 tabstop=8 shiftwidth=8 noexpandtab
 autocmd FileType make      set colorcolumn=81 tabstop=8 shiftwidth=8 noexpandtab
 autocmd FileType python    set colorcolumn=80 tabstop=4 shiftwidth=4 expandtab
+autocmd FileType nix       set tabstop=2 shiftwidth=2 expandtab
 " autocmd BufWritePre * :%s/\s\+$//e

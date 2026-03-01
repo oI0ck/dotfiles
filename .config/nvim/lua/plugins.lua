@@ -11,7 +11,7 @@ if not (vim.uv or vim.loop).fs_stat(path) then
     })
 end
 
-local plugins = {
+require('lazy').setup({
     { 'nvim-treesitter/nvim-treesitter' },
 
     { 'NMAC427/guess-indent.nvim' },
@@ -49,23 +49,12 @@ local plugins = {
     { 'navarasu/onedark.nvim' },
     { 'catppuccin/nvim' },
     { 'deparr/tairiki.nvim' }
-}
-
-require('lazy').setup(plugins)
+})
 
 -- This order is for a reason, becuase on Windows clang tends to put itself in
 -- the PATH by default, and MSVC does not, and for some reason I always have some
 -- bootleg version of gcc in the PATH
 require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
-
-require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'python', 'markdown', 'vimdoc', 'lua' },
-    sync_install = true,
-    highlight = {
-        enable = true,
-    },
-    auto_install = true,
-}
 
 require('guess-indent').setup {}
 
