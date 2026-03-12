@@ -18,7 +18,8 @@
         latex-preview-pane
         slime
         merlin
-        treemacs
+        dired-sidebar
+        ibuffer-sidebar
         evil
         consult
         vertico

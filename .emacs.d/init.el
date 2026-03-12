@@ -40,7 +40,9 @@
       remote-file-name-inhibit-auto-save-visited t
       tramp-copy-size-limit (* 1024 1024)
       tramp-verbose 2
-      magit-tramp-pipe-stty-settings 'pty)
+      magit-tramp-pipe-stty-settings 'pty
+
+      dired-sidebar-window-fixed nil)
 
 (setq-default comment-style 'extra-line
               display-fill-column-indicator-column 81
@@ -53,8 +55,6 @@
 ;; Basic stuff loading
 ;; Order of loading these should be preserved, they depend on eachother
 (load "~/.emacs.d/local-settings/bootstrap.el")
-
-(require 'theme-switcher)
 
 (load "~/.emacs.d/local-settings/keys.el")
 (load "~/.emacs.d/local-settings/modes.el")
@@ -72,7 +72,11 @@
 ;; SLIME configuration
 (if (and (not (eq system-type 'windows-nt))
          (file-exists-p "~/.local/share/quicklisp/slime-helper.el"))
-      (load "~/.local/share/quicklisp/slime-helper.el"))
+    (load "~/.local/share/quicklisp/slime-helper.el"))
+
+;; MU4E configuration
+(if (file-directory-p "/usr/share/emacs/site-lisp/mu4e")
+    (load "~/.emacs.d/local-settings/mu.el"))
 
 ;; Custom file
 (load "~/.emacs.d/custom.el")
