@@ -42,13 +42,26 @@
       tramp-verbose 2
       magit-tramp-pipe-stty-settings 'pty
 
-      dired-sidebar-window-fixed nil)
+      dired-sidebar-window-fixed nil
+
+      completion-styles '(partial-completion substring flex initials))
 
 (setq-default comment-style 'extra-line
               display-fill-column-indicator-column 81
               indent-tabs-mode nil
               c-basic-offset 4
-              truncate-lines t)
+              truncate-lines t
+              jsonnet-indent-level 4
+              whitespace-style '(face
+                                 spaces
+                                 trailing
+                                 space-before-tab
+                                 indentation
+                                 empty
+                                 space-after-tab
+                                 space-mark
+                                 tabs
+                                 tab-mark))
 
 (set-language-environment "UTF-8")
 

@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t -*-
+(require 'theme-switcher)
+
 (exec-path-from-shell-initialize)
 
 (ignore-errors
@@ -8,5 +10,7 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   (add-hook 'compilation-filter-hook 'local-colorize-compilation-buffer))
 
-(set-face-attribute 'default nil :font "Ubuntu Mono:size=12" :weight 'medium)
-(load-theme 'wheatgrass t)
+(setq catppuccin-flavor 'mocha)
+
+(set-face-attribute 'default nil :font "Aporetic Sans Mono:size=12" :weight 'medium)
+(load-theme 'catppuccin t)

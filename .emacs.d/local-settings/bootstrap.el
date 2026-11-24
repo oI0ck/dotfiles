@@ -33,6 +33,7 @@
         solarized-theme
         atom-one-dark-theme
         ef-themes
+        catppuccin-theme
 
         ;; Language modes
         haskell-mode
@@ -55,6 +56,8 @@
         yaml-mode
         terraform-mode
         bazel
+        nix-mode
+        php-mode
         dockerfile-mode))
 
 (defun local-bootstrap-packages ()

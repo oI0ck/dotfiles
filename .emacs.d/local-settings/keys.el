@@ -2,6 +2,8 @@
 (require 'dired)
 (require 'eglot)
 (require 'ibuffer)
+(require 'vertico)
+(require 'rg)
 
 ;; Enable disabled keybinds
 (put 'upcase-region 'disabled nil)
@@ -19,14 +21,22 @@
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
 (global-set-key (kbd "M-<return>") 'eglot-code-actions)
 (global-set-key (kbd "M-o") 'ace-window)
-(global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-sidebar0
+(global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-sidebar)
 
 ;; Eglot
 (define-key eglot-mode-map [C-down-mouse-1] 'xref-find-definitions-at-mouse)
-(define-key eglot-mode-map (kbd "M-.") 'eglot-find-implementation)
+(define-key eglot-mode-map (kbd "M-.") 'xref-find-definitions)
+(define-key eglot-mode-map (kbd "C-c C-k") 'consult-eglot-symbols)
 
 ;; dired
 (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 
 ;; ibuffer
 (define-key ibuffer-mode-map (kbd "o") 'ibuffer-visit-buffer-1-window)
+
+;; vertico
+(define-key vertico-map (kbd "M-j") 'vertico-exit-input)
+
+;; rg.el
+(define-key rg-mode-map (kbd "n") 'compilation-next-error)
+(define-key rg-mode-map (kbd "p") 'compilation-previous-error)

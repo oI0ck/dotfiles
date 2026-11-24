@@ -17,7 +17,8 @@
               truncate-lines t)
 
 (menu-bar-mode 1)
-(load-theme 'wheatgrass t)
+(setq catppuccin-flavor 'mocha)
+(load-theme 'catppuccin t)
 
 (ignore-errors
   (add-hook 'compilation-filter-hook '(lambda ()

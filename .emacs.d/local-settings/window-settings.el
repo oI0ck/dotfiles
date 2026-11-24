@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (require 'magit)
+
 (setq switch-to-buffer-obey-display-actions t)
 (setq magit-display-buffer-function #'display-buffer)
 
@@ -11,7 +12,6 @@
                        "*Man*"))
                display-buffer-reuse-window
                (inhibit-same-window . nil)))
-
 
 (add-to-list 'display-buffer-alist
              '("\\*rg\\*"
@@ -25,13 +25,10 @@
              '("\\*Compliation\\*" display-buffer-reuse-window))
 
 (add-to-list 'display-buffer-alist
-             '("\\*compilation\\*" display-buffer-no-window (allow-no-window . t)))
-
-(add-to-list 'display-buffer-alist
              `((derived-mode . magit-mode)
                (display-buffer-reuse-mode-window
                 display-buffer-in-direction)
                (mode magit-mode)
                (window . root)
-               (window-width . 0.15)
+               (window-width . 0.30)
                (direction . right)))

@@ -9,3 +9,4 @@
 (nyan-mode)
 (global-company-mode)
 (editorconfig-mode)
+(global-whitespace-mode)
