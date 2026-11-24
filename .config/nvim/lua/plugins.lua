@@ -42,6 +42,7 @@ require('lazy').setup({
     -- Languages
     { 'rluba/jai.vim' },
     { 'google/vim-jsonnet' },
+    { 'malleusinferni/bliss.vim' }
 
     -- Themes
     { 'cocateh/vim-gruber-darker' },
@@ -49,12 +50,22 @@ require('lazy').setup({
     { 'navarasu/onedark.nvim' },
     { 'catppuccin/nvim' },
     { 'deparr/tairiki.nvim' }
+    {
+        'felipefdl/warm-burnout',
+        enabled = false,
+        priority = 1000,
+        config = function(plugin)
+            vim.opt.rtp:append(plugin.dir .. '/nvim')
+            vim.cmd.colorscheme 'warm-burnout-dark'
+        end,
+    }
 })
 
 -- This order is for a reason, becuase on Windows clang tends to put itself in
 -- the PATH by default, and MSVC does not, and for some reason I always have some
 -- bootleg version of gcc in the PATH
 require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
+vim.treesitter.language.add('c')
 
 require('guess-indent').setup {}
 
@@ -245,8 +256,6 @@ vim.fn.sign_define('DiagnosticSignHint', {
     numhl = ''
 })
 
-require('telescope').setup {}
-
 local dropdown_theme = require('telescope.themes').get_dropdown({
     result_height = 20;
     width = 0.8;
@@ -255,4 +264,6 @@ local dropdown_theme = require('telescope.themes').get_dropdown({
     previewer = false;
 })
 
-vim.cmd.colorscheme('tairiki')
+require('telescope').setup {}
+
+vim.cmd.colorscheme('catppuccin-mocha')
