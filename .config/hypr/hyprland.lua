@@ -1,7 +1,6 @@
--- Adjust to the machine
 hl.monitor({
    output   = "",
-   mode     = "preferred",
+   mode     = "3840x2160@160.00Hz",
    position = "auto",
    scale    = "1",
 })
@@ -13,6 +12,16 @@ local lockScreen  = "hyprlock"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("GBM_BACKEND", "nvidia-drm")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("NVD_BACKEND", "direct")
+-- hl.env("QT_QPA_PLATFORM", "wayland-egl")
+hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
+hl.env("__EGL_VENDOR_LIBRARY_FILENAMES", "/usr/share/glvnd/egl_vendor.d/10_nvidia.json")
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+hl.env("ZINK_DISABLE_OVERRIDE", "1") -- OrcaSlicer overrides GLX env vars and messes up my setup
 
 hl.on("hyprland.start", function()
    hl.exec_cmd("gentoo-pipewire-launcher restart")
@@ -83,7 +92,7 @@ hl.config({
       kb_rules   = "",
 
       follow_mouse = 1,
-      sensitivity = 0, -- Adjust
+      sensitivity = -0.7,
       touchpad = {
          natural_scroll = false,
       },
@@ -133,7 +142,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + V", hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
 hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
